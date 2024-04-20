@@ -1,1 +1,38 @@
-<p>students works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Grade</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.grade }}</td>
+        <td>
+          <button (click)="editStudent(student)">Edit</button>
+          <button (click)="deleteStudent(student.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button (click)="createStudent()">Create New Student</button>
+  
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+  
+    <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age">
+  
+    <label for="grade">Grade:</label>
+    <input type="text" id="grade" formControlName="grade">
+  
+    <button type="submit">Submit</button>
+  </form>
